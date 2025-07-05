@@ -18,6 +18,7 @@ require('dotenv').config();
 // };
 exports.connectToDB = () => {
     return new Promise((resolve, reject) => {
+        console.log("🚨 MONGO_URI from env:", process.env.MONGODB_URI);
         mongoose.connect(process.env.MONGODB_URI, {
             useNewUrlParser: true,
             useUnifiedTopology: true,
