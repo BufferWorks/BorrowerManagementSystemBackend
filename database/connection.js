@@ -6,7 +6,9 @@ exports.connectToDB = async () => {
         await mongoose.connect(process.env.MONGODB_URI, {
             useNewUrlParser: true,
             useUnifiedTopology: true,
-            serverSelectionTimeoutMS: 20000 // 20 seconds timeout for DB connection
+            serverSelectionTimeoutMS: 30000, // try increasing to 30s
+            bufferCommands: false, // 💥 prevent waiting queries
+
         });
 
         console.log("✅ Connected to MongoDB successfully");
