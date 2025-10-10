@@ -70,7 +70,7 @@ const deleteRoutes = require('./routes/delete');
 // Middlewares
 app.use(cors({
   origin: [
-    'https://www.radharanifinanceservices.online',
+    'https://www.radharanifinanceandservices.shop',
     'https://borrower-management-system.vercel.app',
     'http://localhost:3000',
   ],
