@@ -12,6 +12,7 @@ exports.fetchDailyBorrower = async (req, res) => {
     }
 }
 
+
 exports.fetchMonthlyBorrower = async (req, res) => {
     try {
         const monthlyBorrowers = await MonthlyBorrower.find();
