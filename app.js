@@ -22,6 +22,7 @@ app.use(
   cors({
     origin: [
       "https://radharanifinanceandservices.shop",
+      "https://www.radharanifinanceandservices.shop",
       "https://borrower-management-system.vercel.app",
       "http://localhost:3000",
     ],
