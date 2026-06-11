@@ -55,7 +55,6 @@ exports.fetchDailyInstallment = async (req, res) => {
     if (!borrower) {
       return res.status(404).json({ message: "Borrower not found" });
     }
-    console.log(borrower.installments);
     res
       .status(200)
       .json({ message: "Borrower found", installments: borrower.installments });
