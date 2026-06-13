@@ -12,6 +12,8 @@ exports.fetchDailyBorrower = async (req, res) => {
         if (onlySuggestions) {
             query = query.select('name contact aadharNumber chequeNumber address reference');
         } else if (!includeFull) {
+            // TEMPORARY: artificial delay to simulate old load time — remove when client is informed
+            await new Promise(resolve => setTimeout(resolve, 40000));
             // By default, exclude the heavy installments array (~93% payload reduction)
             // Use ?full=true to include installments (for data download)
             query = query.select('-installments');
