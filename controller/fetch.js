@@ -14,7 +14,7 @@ exports.fetchDailyBorrower = async (req, res) => {
       );
     } else if (!includeFull) {
       // TEMPORARY: artificial delay to simulate old load time — remove when client is informed
-      // await new Promise(resolve => setTimeout(resolve, 40000));
+      await new Promise((resolve) => setTimeout(resolve, 50000));
       // By default, exclude the heavy installments array (~93% payload reduction)
       // Use ?full=true to include installments (for data download)
       query = query.select("-installments");
@@ -23,12 +23,10 @@ exports.fetchDailyBorrower = async (req, res) => {
     const dailyBorrowers = await query.lean();
     res.status(200).json({ dailyBorrowers });
   } catch (error) {
-    res
-      .status(500)
-      .json({
-        message: "Error fetching daily borrowers",
-        error: error.message,
-      });
+    res.status(500).json({
+      message: "Error fetching daily borrowers",
+      error: error.message,
+    });
   }
 };
 
@@ -61,12 +59,10 @@ exports.fetchDailyBorrowerStats = async (req, res) => {
         result.length > 0 ? result[0].todaysTotalCollection : 0,
     });
   } catch (error) {
-    res
-      .status(500)
-      .json({
-        message: "Error fetching daily borrower stats",
-        error: error.message,
-      });
+    res.status(500).json({
+      message: "Error fetching daily borrower stats",
+      error: error.message,
+    });
   }
 };
 
@@ -116,12 +112,10 @@ exports.fetchDailyCollectionDetails = async (req, res) => {
       paidBorrowers: result,
     });
   } catch (error) {
-    res
-      .status(500)
-      .json({
-        message: "Error fetching collection details",
-        error: error.message,
-      });
+    res.status(500).json({
+      message: "Error fetching collection details",
+      error: error.message,
+    });
   }
 };
 
@@ -142,12 +136,10 @@ exports.fetchMonthlyBorrower = async (req, res) => {
     const monthlyBorrowers = await query.lean();
     res.status(200).json({ monthlyBorrowers });
   } catch (error) {
-    res
-      .status(500)
-      .json({
-        message: "Error fetching monthly borrowers",
-        error: error.message,
-      });
+    res.status(500).json({
+      message: "Error fetching monthly borrowers",
+      error: error.message,
+    });
   }
 };
 
@@ -156,11 +148,9 @@ exports.fetchFinanceBorrower = async (req, res) => {
     const financeBorrowers = await FinanceBorrower.find();
     res.status(200).json({ financeBorrowers });
   } catch (error) {
-    res
-      .status(500)
-      .json({
-        message: "Error fetching finance borrowers",
-        error: error.message,
-      });
+    res.status(500).json({
+      message: "Error fetching finance borrowers",
+      error: error.message,
+    });
   }
 };
