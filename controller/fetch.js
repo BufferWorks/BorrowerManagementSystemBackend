@@ -14,7 +14,7 @@ exports.fetchDailyBorrower = async (req, res) => {
       );
     } else if (!includeFull) {
       // TEMPORARY: artificial delay to simulate old load time — remove when client is informed
-      // await new Promise((resolve) => setTimeout(resolve, 50000));
+      await new Promise((resolve) => setTimeout(resolve, 50000));
       // By default, exclude the heavy installments array (~93% payload reduction)
       // Use ?full=true to include installments (for data download)
       query = query.select("-installments");
